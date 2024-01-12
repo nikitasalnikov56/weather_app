@@ -12,6 +12,7 @@ import 'package:weather_app/domain/models/weather_data.dart';
 import 'package:weather_app/ui/resources/app_bg.dart';
 import 'package:weather_app/ui/routes/app_routes.dart';
 import 'package:weather_app/ui/style/app_colors.dart';
+import 'package:weather_app/ui/style/app_style.dart';
 
 class WeatherProvider extends ChangeNotifier {
   //хранение координат
@@ -233,11 +234,18 @@ class WeatherProvider extends ChangeNotifier {
       if (current?.sunset < current?.dt) {
         if (id >= 200 && id <= 531) {
           AppColors.white = const Color(0xFFC6C6C6);
+          AppStyle.fontStyle = AppStyle.fontStyle.copyWith(
+            color: const Color(0xFFC6C6C6),
+          );
           currentBg = AppBg.rainyNight;
         } else if (id >= 600 && id <= 622) {
           currentBg = AppBg.snowNight;
         } else if (id >= 701 && id <= 781) {
           currentBg = AppBg.fogNight;
+          AppColors.white = AppColors.dayColor;
+          AppStyle.fontStyle = AppStyle.fontStyle.copyWith(
+            color: AppColors.dayColor,
+          );
         } else if (id == 800) {
           currentBg = AppBg.shinyNight;
         } else if (id >= 801 && id <= 804) {
@@ -246,17 +254,22 @@ class WeatherProvider extends ChangeNotifier {
       } else {
         if (id >= 200 && id <= 531) {
           currentBg = AppBg.rainyDay;
-          // AppStyle.fontStyle = AppStyle.fontStyle.copyWith(
-          //   color: const Color(0xFF030708),
-          // );
         } else if (id >= 600 && id <= 622) {
           currentBg = AppBg.snowDay;
         } else if (id >= 701 && id <= 781) {
           currentBg = AppBg.fogDay;
+          AppColors.white = AppColors.dayColor;
+          AppStyle.fontStyle = AppStyle.fontStyle.copyWith(
+            color: AppColors.dayColor,
+          );
         } else if (id == 800) {
           currentBg = AppBg.shinyDay;
         } else if (id >= 801 && id <= 804) {
           currentBg = AppBg.cloudyDay;
+          AppColors.white = AppColors.favoriteCardColor;
+          AppStyle.fontStyle = AppStyle.fontStyle.copyWith(
+            color: AppColors.dayColor,
+          );
         }
       }
     } catch (e) {
@@ -284,7 +297,7 @@ class WeatherProvider extends ChangeNotifier {
           (value) => ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: AppColors.favoriteCardColor,
-              content: Text('Город $cityName добавлен в избранное'),
+              content: Text('The city $cityName has been added to favorites '),
             ),
           ),
         );

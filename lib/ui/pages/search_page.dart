@@ -26,7 +26,7 @@ class SearchPage extends StatelessWidget {
         ),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        padding: const EdgeInsets.symmetric(horizontal: 25),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

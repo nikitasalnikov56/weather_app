@@ -17,7 +17,7 @@ class Api {
 
   static Future<Coord> getCoords({String cityName = 'Tashkent'}) async {
     final response = await dio.get(
-        'https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey&lang=ru');
+        'https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey');
 
     try {
       final coords = Coord.fromJson(response.data);
@@ -36,7 +36,7 @@ class Api {
       final lat = coord.lat.toString();
       final lon = coord.lon.toString();
       final response = await dio.get(
-          'https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$lon&exclude=hourly,minutely&appid=$apiKey&lang=ru');
+          'https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$lon&exclude=hourly,minutely&appid=$apiKey');
       final weatherData = WeatherData.fromJson(response.data);
       return weatherData;
     }

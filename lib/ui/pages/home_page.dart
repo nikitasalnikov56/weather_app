@@ -1,4 +1,3 @@
-// import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,9 +6,7 @@ import 'package:weather_app/domain/provider/weather_provider.dart';
 import 'package:weather_app/ui/components/current_temp.dart';
 import 'package:weather_app/ui/components/custom_appbar.dart';
 import 'package:weather_app/ui/components/row_items.dart';
-import 'package:weather_app/ui/components/sunrise_sunset_widget.dart';
 import 'package:weather_app/ui/components/week_day_items.dart';
-// import 'package:weather_app/ui/style/app_colors.dart';
 import 'package:weather_app/ui/style/app_style.dart';
 
 class HomePage extends StatelessWidget {
@@ -41,23 +38,18 @@ class WeatherAppBody extends StatelessWidget {
   const WeatherAppBody({
     super.key,
   });
-  static List<String?>? images = [];
   @override
   Widget build(BuildContext context) {
     final model = context.watch<WeatherProvider>();
-    // images = model.cityPhotos?.results?.map((e) => e.urls?.full).toList();
-
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage(
               model.setBg(),
-            )
-            // CachedNetworkImageProvider('${images?[2]}'),
-            ),
+            )),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      padding: const EdgeInsets.only(left: 25, right: 25, top: 25),
       child: Column(
         children: [
           const CustomAppBar(),
@@ -101,7 +93,6 @@ class WeatherAppBody extends StatelessWidget {
                   const SizedBox(height: 28),
                   const WeekDayItems(),
                   const SizedBox(height: 28),
-                  const SunriseSunsetWidget(),
                 ],
               ),
             ),

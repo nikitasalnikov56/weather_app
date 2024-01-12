@@ -21,6 +21,9 @@ class CustomAppBar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextButton.icon(
+            style: TextButton.styleFrom(
+              backgroundColor: AppColors.favoriteCardColor.withOpacity(0.5),
+            ),
             onPressed: () {
               model.setFavorite(
                 context,
